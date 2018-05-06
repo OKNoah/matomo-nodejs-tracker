@@ -100,7 +100,11 @@ MatomoTracker.prototype.trackBulk = function trackBulk (events, callback) {
     })
   });
 
-  var uri = url.parse(this.trackerUrl);
+  var uri = this.trackerUrl;
+
+  if (typeof this.trackerUrl !== 'object')
+    uri = url.parse(this.trackerUrl);
+  }
 
   const requestOptions = {
     protocol: uri.protocol,
